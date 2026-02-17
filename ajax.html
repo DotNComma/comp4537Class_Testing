@@ -8,13 +8,15 @@
     <script>
         function myFunc() {
             const xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "http://apiz.ca/readystatechange", true);
+            xhttp.open("POST", "http://apiz.ca/secrete", true);
             xhttp.send();
             xhttp.onreadystatechange = function () {
-                console.log("hello")
+                if(this.readyState == 4 && this.status == 200)
+                {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
             }
         }
     </script>
 </body>
-
 </html>
